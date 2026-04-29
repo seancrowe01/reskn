@@ -6,13 +6,13 @@ This repo holds everything that makes that work.
 
 ## Who this is for
 
-- **Sean** — runs the show, scrapes leads, runs the calls.
+- **Sean** — runs the show, scrapes leads, generates sites, deploys.
 - **Jake** — calls the leads, sells the redesign.
-- **Giezel** — polishes every site after a deal closes and puts it live.
+- **Giezel** — polishes every site after a deal closes.
 
-If you are Giezel, read `CLAUDE.md` first, then `polish-guide.md`. That's all you need.
+**If you are Giezel, open `START-HERE.md` now.** That's the only doc you need.
 
-If you are a developer joining the project, read this whole README, then `CLAUDE.md`.
+If you are a developer joining the project, keep reading this README.
 
 ## How it works end to end
 

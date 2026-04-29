@@ -4,173 +4,188 @@ The 8 steps you do every time a deal closes.
 
 This is the only document you need open when polishing a site. Follow it top to bottom.
 
+If this is your first time, read `START-HERE.md` first.
+
 ---
 
-## Before you start
+## Step 0 - Wait for Sean's Slack
 
-Sean has messaged you. You should have:
+Sean will Slack you when a deal closes. His message looks like this:
 
-- The slug (like `kevin-brogan-plumbing`)
-- A folder of stuff from the client (photos, Gas Safe number, opening hours, real reviews if any)
-- The domain they want to use (like `kevinbroganplumbing.co.uk`)
+> Hey G. Kevin Brogan deal closed.
+> Slug: kevin-brogan-plumbing
+> Domain: kevinbroganplumbing.co.uk
+> [zip file attached]
 
-If anything is missing, ping Sean before starting. Do not guess.
+The zip will contain:
+
+- `index.html` — the robot draft of the site
+- `assets/` — folder with real client photos (the team, the van, work shots)
+- `details.txt` — Gas Safe number, real opening hours, real years in business, real reviews if any
+
+If anything is missing, message Sean before starting. Do not guess.
 
 ---
 
 ## Step 1 - Pull the latest code (1 minute)
 
-Open your terminal, go to the reskn folder, and pull the latest version:
+In your terminal:
 
 ```bash
 cd reskn
 git pull
 ```
 
-This makes sure you have all the newest scripts and prompts.
+This makes sure you have the newest version of the project. Always do this first.
 
 ---
 
-## Step 2 - Find the site (1 minute)
+## Step 2 - Drop Sean's zip into the right place (2 minutes)
 
-The robot has already generated a draft for every lead. Yours is at:
+Make a new folder for this client under `out/`:
 
 ```
-out/<slug>/index.html
+out/kevin-brogan-plumbing/
 ```
 
-Example: `out/kevin-brogan-plumbing/index.html`
+Unzip Sean's file in there. You should now have:
 
-If for some reason it does not exist, generate it:
-
-```bash
-python scripts/generate_site.py "Kevin Brogan"
+```
+out/kevin-brogan-plumbing/
+├── index.html
+├── details.txt
+└── assets/
+    ├── team-photo.jpg
+    ├── van.jpg
+    └── ... etc
 ```
 
-Open the file in your browser to see the current state. Just double click it.
+The `out/` folder is hidden from git (it stays on your laptop only) so client photos never accidentally get pushed to the internet.
 
 ---
 
-## Step 3 - Drop in the real photos (5 minutes)
+## Step 3 - Open the site to see what you are working with (1 minute)
 
-Make a folder for client photos:
+Two windows side by side:
 
-```
-out/<slug>/assets/
-```
+**Browser:** double click `index.html` to see the current state of the site
+**Editor:** open the same `index.html` in your code editor (Cursor or Claude Code)
 
-Copy every photo the client sent into that folder. Rename them so they make sense:
-
-- `team-photo.jpg` for the team shot
-- `boiler-install-1.jpg`, `boiler-install-2.jpg` etc for work shots
-- `van.jpg` for their branded van
-- `logo.png` for their logo if they have one
-
-Keep file names lowercase, no spaces, dashes between words.
+You will swap photos and text in your editor, then refresh the browser to check.
 
 ---
 
 ## Step 4 - Tell Claude to swap the photos in (5 minutes)
 
-Open the site folder in Claude Code. Then say something like:
+In Claude Code or Cursor, paste this kind of message:
 
-> "Replace the hero stock photo with `assets/team-photo.jpg`. Replace the 'why us' section background with `assets/van.jpg`. Add `assets/boiler-install-1.jpg` to the services grid. Keep all the existing copy."
+> "Replace the hero stock photo with `assets/team-photo.jpg`. Replace the 'why us' background with `assets/van.jpg`. Add `assets/boiler-install-1.jpg` to the services section. Keep all the existing copy the same."
 
-Claude will edit the HTML for you. Refresh the browser to check it looks right.
+Claude does the file edit for you. Refresh the browser to check it looks right.
+
+If a photo is at the wrong size or angle, ask Claude to adjust it (e.g. "make the hero photo cover the full width" or "crop the van photo wider").
 
 ---
 
 ## Step 5 - Add the real client details (10 minutes)
 
-Tell Claude to update the real details. Paste them directly into the message:
+Open `details.txt` (Sean dropped it in the same folder). You will see things like:
 
-> "Update these details in the site:
-> - Gas Safe registration number: 545454
-> - Phone: 02890 123 456
-> - Email: kevin@kevinbroganplumbing.co.uk
-> - Opening hours: Mon-Fri 7am to 7pm, Sat 9am to 4pm, Sun emergency only
-> - Years in business: 16 (since 2009)
-> - Service area: add Comber, Dundonald, Ballygowan, Saintfield, Killyleagh"
+```
+Gas Safe number: 545454
+Phone: 02890 123 456
+Email: kevin@kevinbroganplumbing.co.uk
+Opening hours: Mon-Fri 7am-7pm, Sat 9am-4pm, Sun emergency only
+Years in business: 16 (since 2009)
+Service area: Ballymena, Antrim, Carrickfergus, Larne, Comber, Dundonald, Ballygowan
+Real reviews from client:
+  Sarah M, Belfast, 5 stars: "Kevin came out same day, fixed our boiler in an hour. Brilliant service."
+  James T, Ballymena, 5 stars: "Fair price and proper job. Will use again."
+```
 
-Claude will replace every placeholder for you. Refresh the browser.
+Tell Claude:
 
----
+> "Update the site with these real details: [paste everything from details.txt]"
 
-## Step 6 - Real reviews (only if client sent them) (5 minutes)
-
-If the client sent screenshots of real Google reviews, transcribe the text and tell Claude:
-
-> "Replace the placeholder reviews with these real ones:
-> 1. Sarah M, Belfast, 5 stars: 'Kevin came out same day, fixed our boiler in an hour. Brilliant service.'
-> 2. James T, Ballymena, 5 stars: '[etc]'
-> 3. [etc]"
-
-If the client did NOT send reviews, leave the placeholders alone. They already say "Real Google review" with a link to their Google Business Profile.
+Claude will replace every placeholder. Refresh the browser.
 
 ---
 
-## Step 7 - Final eyeball check (5 minutes)
+## Step 6 - Eyeball check on your phone (5 minutes)
 
-Walk through the whole site one last time on your phone. Things to check:
+Open the file on your phone too. Easiest way:
+
+- Send yourself the file via AirDrop (Mac) or email (Windows)
+- Open it in Safari/Chrome on your phone
+
+Check:
 
 - Phone number works when you tap it (should open the dialler)
-- All photos load (no broken images)
+- All photos load, none are broken
+- Hero looks sharp on a small screen
 - No `<!-- TODO -->` comments left in the file
 - No "your business name here" placeholders
-- Hero looks sharp on a small screen
-- Reviews section has 5 star visuals
-- Footer has the right opening hours
+- Reviews section has 5 star visuals and named reviewers
+- Footer has correct opening hours and address
 
 If anything looks off, ask Claude to fix it.
 
 ---
 
-## Step 8 - Deploy to their domain (10 minutes)
+## Step 7 - Zip the finished folder (2 minutes)
 
-When you are happy with the site, run:
+When the site looks great, zip the whole folder up:
 
-```bash
-python scripts/deploy_vercel.py kevin-brogan-plumbing --domain kevinbroganplumbing.co.uk
-```
+- Mac: right-click the folder, "Compress"
+- Windows: right-click the folder, "Send to → Compressed (zipped) folder"
 
-This does three things automatically:
+Name it `kevin-brogan-plumbing-FINAL.zip` (or whatever the slug is).
 
-1. Pushes the site to Vercel
-2. Connects the domain
-3. Prints out a list of DNS records the client needs to add at their domain provider
+---
 
-Send the DNS records to Sean. Sean sends them to the client. Once the client adds them, the site goes live (usually within an hour).
+## Step 8 - Slack the zip back to Sean (2 minutes)
+
+Slack message to Sean:
+
+> Done with kevin-brogan-plumbing. [zip attached]
+> Notes: [anything Sean should know — e.g. "had to crop the van photo wider, looked stretched", or "client did not send a Gas Safe number so left as 'number on request'"]
+
+Sean takes it from there. He puts it live on the client's domain.
 
 ---
 
 ## After it goes live
 
-1. Send Sean the live URL.
-2. Mark the deal `Delivered` in GHL.
-3. Move on to the next one.
+Sean will message you when the site is live. That is when the job is done.
+
+Mark the deal `Polished` in your tracker (Trello or however Sean asks).
+
+Move on to the next one.
 
 ---
 
-## How long this should take you
+## How long this should take
 
-About 30 to 45 minutes per site, once you have done it a few times.
+About 30 to 45 minutes per site once you have done a few. First one might take an hour. That is normal.
 
-If it takes you more than an hour, ping Sean. Something might be off with the source draft and we can fix it together.
+If it takes you more than 90 minutes, ping Sean. Something is probably off with the source draft and we can fix it together.
 
 ---
 
 ## Common mistakes to avoid
 
-- **Editing the wrong file.** Always work in `out/<slug>/index.html`. Never touch the prompts or scripts.
+- **Editing the wrong file.** Always work in `out/<slug>/index.html`. Never touch the prompts or scripts folders.
 - **Inventing a Gas Safe number.** If the client did not send one, use `Gas Safe registered (number on request)`.
-- **Forgetting to test the phone link.** Tap it on your actual phone before you ship.
-- **Pushing photos to git.** Photos go in `out/<slug>/assets/` which is gitignored. Do not commit them.
+- **Forgetting to test the phone link.** Tap it on your actual phone before you send the zip back.
+- **Pushing photos to git.** Photos go in `out/<slug>/assets/` which is gitignored. Do not commit them. The folder is hidden from git on purpose.
 - **Changing the structure.** The 9 sections are locked. Do not add or remove sections without asking Sean.
+- **Not pulling first.** Always `git pull` at the start. Sean might have updated the prompts or the brand voice rules.
 
 ---
 
 ## When you are stuck
 
-Paste the problem into Claude. Claude has the full project context from `CLAUDE.md` and will help.
+1. Paste the problem into Claude. Claude has the full project context from `CLAUDE.md` and will help.
+2. If Claude cannot fix it in 15 minutes, ping Sean.
 
-If Claude cannot fix it in 15 minutes, ping Sean. Do not waste a whole afternoon stuck on one site.
+Do not waste a whole afternoon stuck on one site. We will fix it together in 5 minutes.

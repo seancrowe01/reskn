@@ -98,9 +98,21 @@ You should not add or remove sections. Just polish the content inside them.
 | They sent real Google review screenshots | "Replace the placeholder reviews with these real ones: [paste]." |
 | Change opening hours | "Update opening hours to Mon-Fri 7am to 7pm, Sat 9am to 4pm, Sun emergency only." |
 
-## Running the tools
+## You do NOT run any Python
 
-You only need three commands ever:
+Sean handles all robot work — scraping leads, generating drafts, deploying live sites. You only edit HTML files in `out/<slug>/`.
+
+The flow is:
+
+1. Sean Slacks you a zip with the draft + photos + details
+2. You unzip into `out/<slug>/`
+3. You polish the HTML
+4. You zip the folder back up and Slack it to Sean
+5. Sean deploys it
+
+You never need Python installed. You only need git, an editor with Claude (Cursor or Claude Code), and a browser.
+
+## Sean-only commands (for reference, do not run these)
 
 ```bash
 # Generate a site for one client (if not already generated)
