@@ -1,0 +1,37 @@
+# Secrets — never commit
+.env
+.env.local
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Generated sites (one folder per lead, contain client photos)
+out/
+
+# Lead data (client data, not for public repo)
+data/HOT-leads.csv
+data/WARM-leads.csv
+data/HOT-leads.md
+data/HOT-leads-clean.md
+data/ni-full_*
+data/ni_clean_*
+data/belfast_*
+data/firecrawl-cache/
+data/batch-log.csv
+data/deploy-log.csv
+data/*.json
+
+# Node + Vercel
+node_modules/
+.vercel/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
